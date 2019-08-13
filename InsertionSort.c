@@ -4,9 +4,7 @@
 
 void Print_List(int *List, int *n){
 	int i;
-	for(i = 0; i < *n; i++){
-		printf("%d ",List[i]);
-	}
+	for(i = 0; i < *n; i++) printf("%d ",List[i]);
 	printf("\n");
 }
 void Input_List(int *List, int N, int *n){
@@ -35,20 +33,20 @@ void Insertion_Sort(int *List, int *n){
 	for(i = 0; i < *n; i++) IniList[i] = List[i];
 	printf("Initial State of List : ");
 	for(k =0; k < *n ; k++) printf("%d ",IniList[k]);
-		printf("\n");
+	printf("\n");
 	for(j=1;j<*n;j++){
 		printf("===================\n");
-        printf("Turn of %d Index\n",j);
+        	printf("Turn of %d Index\n",j);
 		printf("===================\n");
 		key = List[j];
-        i = j - 1;
+        	i = j - 1;
         while(i >= 0 && List[i] > key){
-            List[i+1] = List[i];
-			printf("Index %d and %d are changed\n",i,i+1);
-			Print_List(List,n);
-            i = i - 1;
+            	List[i+1] = List[i];
+		printf("Index %d and %d are changed\n",i,i+1);
+		Print_List(List,n);
+            	i = i - 1;
         }
-        List[i+1] = key;
+        	List[i+1] = key;
 		system("pause");
     }
 }
@@ -95,5 +93,6 @@ int main(){
         system("cls");
         if(exit == 0) break;
     }
-    free(List);
+    	free(List);
+	system("pause");
 }
