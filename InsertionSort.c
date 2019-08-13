@@ -60,6 +60,7 @@ int main(){
     int *List = malloc(sizeof(int)*N);
 	int i;
 	for(i = 0; i < N; i++) List[i] = 0;
+    system("cls");
     while(1){
         printf("========Insertion Sort Simulation========\n");
 	printf("Status of List : ");
