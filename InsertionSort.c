@@ -64,28 +64,27 @@ int main(){
 	for(i = 0; i < N; i++) List[i] = 0;
     while(1){
         printf("========Insertion Sort Simulation========\n");
-		printf("Status of List : ");
-		Print_List
-    (List,&n);
+	printf("Status of List : ");
+	Print_List(List,&n);
         printf("1) Input Number\n");
-		printf("2) Initialization\n");
+	printf("2) Initialization\n");
         printf("3) Sorting\n");
         printf("Default) Exit\n");
         scanf("%d",&menu);
         switch(menu){
             case 1:{
                 system("cls");
-				Input_List(List,N,&n);
+		Input_List(List,N,&n);
                 break;
             }
             case 2:{
                 system("cls");
-				Initialize_List(List,N,&n);
+		Initialize_List(List,N,&n);
                 break;
             }
             case 3:{
                 system("cls");
-				Insertion_Sort(List,&n);
+		Insertion_Sort(List,&n);
                 break;
             }
             default :{
