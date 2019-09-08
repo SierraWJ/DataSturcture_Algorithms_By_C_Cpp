@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <windows.h>
 
-void Print_List(int *List, int *n){
+void Print_Array(int *Array, int *n){
 	int i;
-	for(i = 0; i < *n; i++) printf("%d ",List[i]);
+	for(i = 0; i < *n; i++) printf("%d ",Array[i]);
 	printf("\n");
 }
-void Input_List(int *List, int N, int *n){
+void Input_Array(int *Array, int N, int *n){
     if(*n < N){
         int num;
         printf("Input Number : ");
         scanf("%d",&num);
-        List[*n] = num;
+        Array[*n] = num;
         *n += 1;
     }
     else{
@@ -20,33 +20,33 @@ void Input_List(int *List, int N, int *n){
         system("pause");
     }
 }
-void Initialize_List(int *List,int N, int *n){
+void Initialize_Array(int *Array,int N, int *n){
 	*n = 0;
 	int i;
 	for(i = 0; i < N; i++){
-		List[i] = 0;
+		Array[i] = 0;
 	}
 }
-void Insertion_Sort(int *List, int *n){
+void Insertion_Sort(int *Array, int *n){
 	int i,j,k,key;
-	int *IniList = malloc(sizeof(int)*(*n));
-	for(i = 0; i < *n; i++) IniList[i] = List[i];
-	printf("Initial State of List : ");
-	for(k =0; k < *n ; k++) printf("%d ",IniList[k]);
+	int *IniArray = malloc(sizeof(int)*(*n));
+	for(i = 0; i < *n; i++) IniArray[i] = Array[i];
+	printf("Initial State of Array : ");
+	for(k =0; k < *n ; k++) printf("%d ",IniArray[k]);
 	printf("\n");
 	for(j=1;j<*n;j++){
 		printf("===================\n");
         	printf("Turn of %d Index\n",j);
 		printf("===================\n");
-		key = List[j];
+		key = Array[j];
         	i = j - 1;
-        while(i >= 0 && List[i] > key){
-            	List[i+1] = List[i];
+        while(i >= 0 && Array[i] > key){
+            	Array[i+1] = Array[i];
 		printf("Index %d and %d are changed\n",i,i+1);
-		Print_List(List,n);
+		Print_Array(Array,n);
             	i = i - 1;
         }
-        	List[i+1] = key;
+        	Array[i+1] = key;
 		system("pause");
     }
 }
@@ -55,16 +55,16 @@ int main(){
     int exit;
     int N;
     int n = 0;
-    printf("Input Size of List : ");
+    printf("Input Size of Array : ");
     scanf("%d",&N);
-    int *List = malloc(sizeof(int)*N);
+    int *Array = malloc(sizeof(int)*N);
 	int i;
-	for(i = 0; i < N; i++) List[i] = 0;
+	for(i = 0; i < N; i++) Array[i] = 0;
     system("cls");
     while(1){
         printf("========Insertion Sort Simulation========\n");
-	printf("Status of List : ");
-	Print_List(List,&n);
+	printf("Status of Array : ");
+	Print_Array(Array,&n);
         printf("1) Input Number\n");
 	printf("2) Initialization\n");
         printf("3) Sorting\n");
@@ -73,17 +73,17 @@ int main(){
         switch(menu){
             case 1:{
                 system("cls");
-		Input_List(List,N,&n);
+		Input_Array(Array,N,&n);
                 break;
             }
             case 2:{
                 system("cls");
-		Initialize_List(List,N,&n);
+		Initialize_Array(Array,N,&n);
                 break;
             }
             case 3:{
                 system("cls");
-		Insertion_Sort(List,&n);
+		Insertion_Sort(Array,&n);
                 break;
             }
             default :{
@@ -94,6 +94,6 @@ int main(){
         system("cls");
         if(exit == 0) break;
     }
-    	free(List);
+    	free(Array);
 	system("pause");
 }
