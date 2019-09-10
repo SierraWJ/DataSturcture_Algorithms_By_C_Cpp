@@ -38,15 +38,14 @@ void Print_Partial_Array(int *Array, int a, int b){
     printf("\n");
 }
 void bubbleSort(int *Array, int n){
-    int tmp;
     int i,j;
     printf("Before Bubblesort : ");
     printf("=======================================\n");
     Print_Array(Array,n);
-    for(i = 0; i < n - 1; i++){
-        for(j = i + 1; j < n; j++){
-            if(Array[i] > Array[j]){
-                SWAP(Array[i],Array[j]);
+    for (i = n-1 ; i > 0 ; i--){
+        for (j = 0 ; j < i ; j++){
+            if (Array[j] > Array[j+1]){
+                SWAP(Array[j],Array[j+1]); //#define SWAP(a,b) {int t; t=a; a=b; b=t;}
                 printf("Index %d and %d was swapped\n",i,j);
                 Print_Array(Array,n);
             }
