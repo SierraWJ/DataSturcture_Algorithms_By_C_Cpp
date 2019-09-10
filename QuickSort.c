@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #define SWAP(a,b) {int t; t=a; a=b; b=t;}
 
 void Input_Array(int *Array, int N, int *n){
