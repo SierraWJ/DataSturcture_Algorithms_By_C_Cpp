@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <windows.h>
+
+void SWAP(int *a, int *b);
+int Randomized_Select(int A[], int p, int r, int i);
+int Randomized_Partition(int A[], int p, int r);
+int partition(int A[], int p, int r);
+int main(){
+    int N;
+   /* printf("Input Size of Array : ");
+    scanf("%d",&N);
+    int *A = malloc(sizeof(int)*N);*/    
+    int Array[10] = { 0,1,2,3,4,5,6,7,8,9};
+    int i;
+    for (i = 0; i < 10; i++){
+        printf("%d\n", i);
+        printf("Randomized Select : %d\n", Randomized_Select(Array, 0, 9, i));
+    }
+}
+void SWAP(int *a, int *b){
+    int tmp;
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+int Randomized_Select(int A[], int p, int r, int i){
+    if (p == r) return A[p];
+    int q = Randomized_Partition(A, p, r);
+    int k = q - p;
+    if (i == k) return A[q];
+    else if (i < k) return Randomized_Select(A, p, q - 1, i);
+    else return Randomized_Select(A, q + 1, r, i - k-1);
+}
+int Randomized_Partition(int A[], int p, int r){
+    srand(time(NULL));
+    int i;
+    i = rand() % (r - p + 1) + p;
+    SWAP(&A[r], &A[i]);
+    return partition(A, p, r);
+}
+int partition(int A[], int p, int r){
+    int x = A[r];
+    int i = p - 1;
+    int j;
+    for (j = p; j <= r - 1; j++){
+        if (A[j] <= x){
+            i = i + 1;
+            SWAP(&A[i], &A[j]);
+        }
+    }
+    SWAP(&A[i + 1], &A[r]);
+    return i + 1;
+}
