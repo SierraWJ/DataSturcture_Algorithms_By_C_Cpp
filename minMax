@@ -1,0 +1,38 @@
+#include <stdio.h>
+void Find_minimax(int A[], int n, int *max, int *min);
+void larger_smaller(int a, int b, int *max, int *min);
+int main(){
+    int Array[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    int max, min;
+    Find_minimax(Array, 10, &max, &min);
+    printf("max : %d\nmin : %d\n", max, min);
+}
+void Find_minimax(int A[], int n, int *max, int *min){
+    int base, i, j;
+    int a, b;
+    if (n % 2 != 0){
+        *max = A[0];
+        *min = A[0];
+        base = 1;
+    }
+    else{
+        larger_smaller(A[0], A[1], max, min);
+        base = 0;
+    }
+    for (i = 0; i < (int)((n) / 2); i++){
+        j = 2 * i + base;
+        larger_smaller(A[j], A[j + 1], &a, &b);
+        if (a > *max) *max = a;
+        if (b < *min) *min = b;
+    }
+}
+void larger_smaller(int a, int b, int *max, int *min){
+    if (a >= b){
+        *max = a;
+        *min = b;
+    }
+    else{
+        *max = b;
+        *min = a;
+    }
+}
