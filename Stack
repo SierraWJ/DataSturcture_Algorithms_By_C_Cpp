@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
+void Push(int *Stack, int *Stack_top,int N){
+    if(*Stack_top == N - 1){
+        printf("OverFlow!\n");
+    }
+    else{
+    int num;
+    printf("Push\n");
+    printf("input number : ");
+    scanf("%d",&num);
+    *Stack_top = *Stack_top + 1;
+    Stack[*Stack_top] = num;
+    }
+}
+void Pop(int *Stack, int *Stack_top){
+    if(*Stack_top == -1){
+        printf("UnderFlow!\n");
+    }
+    else{
+    *Stack_top = *Stack_top - 1;
+    printf("%d was Popped\n",Stack[*Stack_top + 1]);
+    }
+}
+void Print_Stack(int *Stack, int *Stack_top) {
+	int tmp_top;
+
+	tmp_top = *Stack_top;
+
+	while (tmp_top != -1) {
+		printf("%d ", Stack[tmp_top]);
+		tmp_top = tmp_top - 1;
+	}
+	printf("\n");
+}
+int main(){
+    int N;
+    printf("Input Size of Stack : ");
+    scanf("%d",&N);
+    int *S = malloc(sizeof(int)*N);
+    int s_top = -1;
+    int menu,exit;
+    while(1){
+        Print_Stack(S,&s_top);
+        printf("========Stack Simulator========\n");
+        printf("1) Push\n");
+        printf("2) Pop\n");
+        printf("default ) Exit\n");
+        scanf("%d",&menu);
+        switch(menu){
+            case 1:
+                Push(S,&s_top,N);
+                break;
+            case 2:
+                Pop(S,&s_top);
+                break;
+            default :
+                exit = 0;
+                break;
+        }
+        system("cls");
+        if(exit == 0) break;
+    }
+    free(S);
+    system("pause");
+}
