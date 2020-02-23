@@ -3,27 +3,25 @@
 #include <windows.h>
 
 void Print_Queue(int *Q, int *Q_head, int *Q_tail,int N) {
-	int tmp_head;
-
-	tmp_head = *Q_head;
-
-	while (tmp_head != *Q_tail) {
-		printf("%d ", Q[tmp_head]);
-		if (tmp_head == N)
-			tmp_head = 0;
-		else
-			tmp_head = tmp_head + 1;
-	}
-	printf("\n");
+	if(*Q_head != *Q_tail){
+        int tmp_head;
+	    tmp_head = *Q_head;
+	    while (tmp_head != *Q_tail) {
+		    printf("%d ", Q[tmp_head]);
+		    if (tmp_head == N)
+			    tmp_head = 0;
+		    else
+			    tmp_head = tmp_head + 1;
+	    }
+	    printf("\n");
+    }
 }
 void enqueue(int *Q, int *Q_head, int *Q_tail, int N) {
 	int x;
 	printf("Input Number : ");
 	scanf("%d",&x);
-	if(*Q_tail <= N){
 	Q[*Q_tail] = x;
-	if (*Q_tail == N)
-		printf("OverFlow!\n");
+    if (*Q_tail == N) *Q_tail = 0;
 	else
 		*Q_tail = *Q_tail + 1;
 	}
@@ -32,7 +30,7 @@ int dequeue(int *Q, int *Q_head, int *Q_tail, int N) {
 	int x;
 	x = Q[*Q_head];
 	if (*Q_head == N)
-		printf("UnderFlow!\n");
+        *Q_head = 1;
 	else
 		*Q_head = *Q_head + 1;
 	return x;
@@ -48,8 +46,8 @@ int main(void) {
     int Q_tail = 0;
 	while (1) {
 		printf("select menu : \n");
-		printf("0) inqueue\n");
-		printf("1) dequeue\n");
+		printf("0) Enqueue\n");
+		printf("1) Dequeue\n");
 		printf("default) exit\n");
 		scanf("%d", &menu);
 		if (menu == 0) {
