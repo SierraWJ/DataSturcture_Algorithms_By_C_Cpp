@@ -21,9 +21,12 @@ void enqueue(int *Q, int *Q_head, int *Q_tail, int N) {
 	printf("Input Number : ");
 	scanf("%d",&x);
 	Q[*Q_tail] = x;
-    if (*Q_tail == N) *Q_tail = 0;
-	else
-		*Q_tail = *Q_tail + 1;
+    	if (*Q_tail == N) {
+        	if(*Q_head == 0) printf("OverFlow!\n");
+        	else *Q_tail = 0;
+    	}
+    	else if(*Q_tail + 1 == *Q_head) printf("OverFlow!\n");
+		else *Q_tail = *Q_tail + 1;
 	}
 }
 int dequeue(int *Q, int *Q_head, int *Q_tail, int N) {
