@@ -30,13 +30,17 @@ void enqueue(int *Q, int *Q_head, int *Q_tail, int N) {
 	}
 }
 int dequeue(int *Q, int *Q_head, int *Q_tail, int N) {
-	int x;
-	x = Q[*Q_head];
-	if (*Q_head == N)
-        *Q_head = 1;
-	else
-		*Q_head = *Q_head + 1;
-	return x;
+	if(*Q_head == *Q_tail) printf("Underflow!\n");
+    	else{
+        	int x;
+	    	x = Q[*Q_head];
+	    	if (*Q_head == N) *Q_head = 0;
+	    	else{
+            	x = Q[*Q_head];
+ 	    	*Q_head = *Q_head + 1;
+             	return x;
+	}
+   }
 }
 int main(void) {
 	int x;
